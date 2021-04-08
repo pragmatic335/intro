@@ -1,40 +1,44 @@
-<div class="col-lg-12">
-    <div class="ibox collapsed border-bottom">
-        <div class="ibox-title">
-            <h5>Example of initial collapsed panel</h5>
-            <div class="ibox-tools">
-                <a class="collapse-link">
-                    <i class="fa fa-chevron-down"></i>
-                </a>
-                <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
-                    <i class="fa fa-wrench"></i>
-                </a>
-                <ul class="dropdown-menu dropdown-user">
-                    <li><a href="#">Config option 1</a>
-                    </li>
-                    <li><a href="#">Config option 2</a>
-                    </li>
-                </ul>
-                <a class="close-link">
-                    <i class="fa fa-times"></i>
-                </a>
+<div class="row">
+    <div class="col-lg-12">
+        <div class="ibox collapsed border-bottom">
+            <div class="ibox-title">
+                <h5>Фильтр</h5>
+                <div class="ibox-tools">
+                    <a class="collapse-link">
+                        <i class="fa fa-chevron-down"></i>
+                    </a>
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
+                        <i class="fa fa-wrench"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-user">
+                        <li><a href="#">Config option 1</a>
+                        </li>
+                        <li><a href="#">Config option 2</a>
+                        </li>
+                    </ul>
+                    <a class="close-link">
+                        <i class="fa fa-times"></i>
+                    </a>
+                </div>
             </div>
-        </div>
-        <div class="ibox-content" style="display: block;">
+            <div class="ibox-content" style="display: block;">
 
-            <?php
-            /**
-             * @var $model app\models\FilterForm
-             */
-
-
-            echo $this->render( '_form', [
-                'model' => $model,
-            ] );
+                <?php
+                /**
+                 * @var $model app\models\FilterForm
+                 */
 
 
-            ?>
+                use miloschuman\highcharts\Highcharts;
 
+                echo $this->render( '_form', [
+                    'model' => $model,
+                ] );
+
+
+                ?>
+
+            </div>
         </div>
     </div>
 </div>
@@ -86,3 +90,27 @@
         </div>
     </div>
 </div>
+
+
+
+
+
+<?php
+
+echo Highcharts::widget([
+    'options' => [
+        'title' => ['text' => 'Fruit Consumption'],
+        'xAxis' => [
+            'categories' => ['Apples', 'Bananas', 'Oranges']
+        ],
+        'yAxis' => [
+            'title' => ['text' => 'Fruit eaten']
+        ],
+        'series' => [
+            ['name' => 'Jane', 'data' => [1, 0, 4]],
+            ['name' => 'John', 'data' => [5, 7, 3]]
+        ]
+    ]
+]);
+
+?>
