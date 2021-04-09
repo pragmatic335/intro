@@ -1,47 +1,20 @@
-<div class="row">
-    <div class="col-lg-12">
-        <div class="ibox collapsed border-bottom">
-            <div class="ibox-title">
-                <h5>Фильтр</h5>
-                <div class="ibox-tools">
-                    <a class="collapse-link">
-                        <i class="fa fa-chevron-down"></i>
-                    </a>
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
-                        <i class="fa fa-wrench"></i>
-                    </a>
-                    <ul class="dropdown-menu dropdown-user">
-                        <li><a href="#">Config option 1</a>
-                        </li>
-                        <li><a href="#">Config option 2</a>
-                        </li>
-                    </ul>
-                    <a class="close-link">
-                        <i class="fa fa-times"></i>
-                    </a>
-                </div>
-            </div>
-            <div class="ibox-content" style="display: block;">
+<?php
+/**
+ * @var $model app\models\FilterForm
+ */
 
-                <?php
-                /**
-                 * @var $model app\models\FilterForm
-                 */
+use app\assets\FilterAsset;
+use miloschuman\highcharts\Highcharts;
+use yii\widgets\Pjax;
+
+echo $this->render('_filter', ['model' => $model]);
+
+Pjax::begin(['id' => 'filter-pjax', 'enablePushState' => true, 'timeout' => false]);
+
+echo $this->render('_filterhide', ['model' => $model]);
+?>
 
 
-                use miloschuman\highcharts\Highcharts;
-
-                echo $this->render( '_form', [
-                    'model' => $model,
-                ] );
-
-
-                ?>
-
-            </div>
-        </div>
-    </div>
-</div>
 
 <div class="row">
     <div class="col-lg-4">
@@ -97,20 +70,29 @@
 
 <?php
 
+
+
 echo Highcharts::widget([
     'options' => [
-        'title' => ['text' => 'Fruit Consumption'],
+        'title' => ['text' => 'test'],
         'xAxis' => [
-            'categories' => ['Apples', 'Bananas', 'Oranges']
+            'categories' => [
+                Yii::$app->formatter->format('01.01.2020', 'date'),
+
+
+            ]
         ],
         'yAxis' => [
-            'title' => ['text' => 'Fruit eaten']
+            'title' => ['text' => 'up']
         ],
         'series' => [
-            ['name' => 'Jane', 'data' => [1, 0, 4]],
+            ['name' => 'Jane', 'data' => [1, 0, 4,]],
             ['name' => 'John', 'data' => [5, 7, 3]]
         ]
     ]
 ]);
+
+Pjax::end();
+FilterAsset::register($this);
 
 ?>

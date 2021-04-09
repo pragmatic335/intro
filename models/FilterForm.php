@@ -1,8 +1,5 @@
 <?php
-
-
 namespace app\models;
-
 
 use Yii;
 use yii\base\Model;
@@ -20,7 +17,7 @@ class FilterForm extends Model
     {
         return [
 
-            [ ['category', 'object', 'currencies', 'bdate', 'edate'], 'safe' ],
+            [ ['category', 'object', 'currency', 'bdate', 'edate'], 'safe' ],
 
 
         ];
@@ -31,9 +28,12 @@ class FilterForm extends Model
             'interval' => Yii::t('app', 'interval'),
             'category' => Yii::t('app', 'category'),
             'object' => Yii::t('app', 'object'),
-            'currencies' => Yii::t('app', 'currencies'),
-
+            'currency' => Yii::t('app', 'currencies'),
         ];
     }
+
+
+
+
 
 }

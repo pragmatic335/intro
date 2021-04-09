@@ -7,7 +7,7 @@ $config = [
     'id' => 'basic',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
-    'language' => 'ru-Ru',
+    'language' => 'ru-RU',
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
         '@npm'   => '@vendor/npm-asset',
@@ -45,6 +45,11 @@ $config = [
             ],
         ],
         'db' => $db,
+        'formatter' => [
+            'dateFormat' => 'php:d M Y',
+            'thousandSeparator' => '',
+            'decimalSeparator' => ',',
+        ],
 
         'urlManager' => [
             'enablePrettyUrl' => true,
