@@ -14,7 +14,7 @@ use yii\helpers\Html;
 
 $form = ActiveForm::begin([
     'id' => 'filter-hide-form',
-    'method' => 'get',
+//    'method' => 'get',
     'options' => ['data-pjax' => true ]
 ]);
 

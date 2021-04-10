@@ -41,8 +41,13 @@ class CurrencyConverter
         elseif($endCurrency == self::CUR['RUB']) {
             return round( $this->currencyCbr->getCurrency($beginCurrency, $this->precision) * $sum, $this->precision);
         }
+        elseif($beginCurrency == self::CUR['RUB']) {
+            return round($sum/$this->currencyCbr->getCurrency($endCurrency, $this->precision + 1), 2);
+        }
 
         //курс конвертируемой
+//        echo static::CUR[$beginCurrency]; die();
+
         $first = $this->currencyCbr->getCurrency(static::CUR[$beginCurrency], $this->precision);
         //курс выходной
         $second = $this->currencyCbr->getCurrency(static::CUR[$endCurrency], $this->precision);
