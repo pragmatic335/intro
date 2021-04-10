@@ -80,31 +80,6 @@
 
                     <div class="col-md-3">
                         <?php
-                        echo $form->field($model, 'type')
-                            ->label(false)
-                            ->widget(Select2::className(), [
-                                'name' => 'type',
-                                'options' => [
-                                    'placeholder' =>'Тип',
-                                    'multiple' => false,
-                                    'autocomplete' => 'off'
-                                ],
-                                'pluginOptions' => [
-                                    'allowClear' => true,
-                                    'ajax' => [
-                                        'placement' => 'bottom',
-                                        'url' =>   Url::to(['/'.\Yii::$app->controller->id.'/ajax/lists/types']),
-                                        'dataType' => 'json',
-                                        'data' =>  new JsExpression('function(params) { return {q:params.term}}'),
-                                    ],
-
-                                ],
-                            ]);
-                        ?>
-                    </div>
-
-                    <div class="col-md-3">
-                        <?php
                         echo $form->field($model, 'currency')
                             ->label(false)
                             ->widget(Select2::className(), [
@@ -126,6 +101,11 @@
                                 ],
                             ]);
                         ?>
+                    </div>
+
+                    <div class="col-md-3">
+                        <button class="btn btn-outline btn-info  dim" type="button"><i class="fa fa-dollar"><?=  (new \app\models\converter\CurrencyCbr())->getCurrency('USD', 2) ?></i> </button>
+                        <button class="btn btn-outline btn-info  dim" type="button"><i class="fa fa-euro"><?=  (new \app\models\converter\CurrencyCbr())->getCurrency('EUR', 2) ?></i> </button>
                     </div>
                 </div>
 

@@ -4,6 +4,7 @@
 namespace app\controllers;
 
 
+use app\models\Balance;
 use app\models\FilterForm;
 use app\models\Income;
 use app\models\Outlay;
@@ -17,28 +18,28 @@ class StatisticsController extends Controller
         $model = new FilterForm();
         $income = new Income($model);
         $outlay = new Outlay($model);
+        $balance = new Balance($model);
+
 
         if(Yii::$app->request->isAjax) {
             $model->attributes = $_POST['FilterForm'];
-//            $income = new Income($model);
-//            $outlay = new Outlay($model);
-
-//            $model->load( $_POST['FilterForm']);
-//            var_dump($model); die();
-//            $income = new Income($model);
-//            $test = $income->getIncome();
-
-//            var_dump($income->filter); die();
         }
 
+        //параметры под доходную составляющую
         $income->setParams();
+
+        //параметры под расходную
         $outlay->setParams();
+
+        //параметры под балансную
+        $balance->setParams();
+
         return $this->render('index',
             [
                 'model' => $model,
                 'income' => $income,
                 'outlay' => $outlay,
-
+                'balance' => $balance,
             ]);
     }
 }

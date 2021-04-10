@@ -9,9 +9,9 @@ namespace app\models\converter;
  * Class CurrencyCbr
  * @package app\models
  */
-class  CurrencyCbr
+class  CurrencyCbr implements CurrencyInterface
 {
-    public function getCurrency($currency_code, $format) : float
+    public function getCurrency(string $currency_code, int $format) : float
     {
         $date = date('d/m/Y'); // Текущая дата
         $cache_time_out = '3600'; // Время жизни кэша в секундах

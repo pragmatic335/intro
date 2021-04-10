@@ -18,6 +18,8 @@ class Income
     public  $categories = [];
     public array $data = [];
 
+    public $cur;
+
     public function __construct(FilterForm $filter)
     {
         $this->filter = $filter;
@@ -25,6 +27,13 @@ class Income
 
     public function setParams()
     {
+        if(!$this->filter->currency) {
+            $this->cur = 'RUB';
+        }
+        else {
+            $this->cur = Currencies::findOne($this->filter->currency)['name'];
+        }
+
         $converter = new CurrencyConverter(new CurrencyCbr());
         $format = 'm-d-Y';
 

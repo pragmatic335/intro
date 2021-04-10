@@ -29,11 +29,6 @@ echo $form->field($model, 'edate', [
         'id' => 'filter-hide-form-edate',
     ]]);
 
-echo $form->field($model, 'type', [
-    'inputOptions' => [
-        'id' => 'filter-hide-form-type',
-    ]]);
-
 echo $form->field($model, 'currency', [
     'inputOptions' => [
         'id' => 'filter-hide-form-currency',

@@ -3,6 +3,7 @@
  * @var $model app\models\FilterForm
  * @var $income app\models\Income
  * @var $outlay app\models\Outlay
+ * @var $balance app\models\Balance
  */
 ?>
 
@@ -25,7 +26,7 @@
                         echo '<i class="fa fa-dollar"></i>';
                     }
 
-                    echo $income->summa;
+                    echo " &nbsp; " . $income->summa;
                     ?>
                 </h1>
 
@@ -57,7 +58,7 @@
                         echo '<i class="fa fa-dollar"></i>';
                     }
 
-                    echo $outlay->summa;
+                    echo " &nbsp; " . $outlay->summa;
                     ?>
                 </h1>
 
@@ -89,7 +90,8 @@
                         echo '<i class="fa fa-dollar"></i>';
                     }
 
-                    echo $income->summa - $outlay->summa;
+                    echo " &nbsp; ";
+                    echo $balance->summa;
                     ?>
                 </h1>
 

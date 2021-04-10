@@ -15,9 +15,9 @@ class CurrencyConverter
 
     public int $precision = 2;
 
-    protected CurrencyCbr $currencyCbr;
+    protected CurrencyInterface $currencyCbr;
 
-    public function __construct(CurrencyCbr $rate)
+    public function __construct(CurrencyInterface $rate)
     {
         $this->currencyCbr = $rate;
     }
@@ -45,16 +45,11 @@ class CurrencyConverter
             return round($sum/$this->currencyCbr->getCurrency($endCurrency, $this->precision + 1), 2);
         }
 
-        //курс конвертируемой
-//        echo static::CUR[$beginCurrency]; die();
-
         $first = $this->currencyCbr->getCurrency(static::CUR[$beginCurrency], $this->precision);
         //курс выходной
         $second = $this->currencyCbr->getCurrency(static::CUR[$endCurrency], $this->precision);
         //коэффициет
         $index =  $first/$second;
-
-
 
         return round($index * $sum, $this->precision);
     }

@@ -14,18 +14,16 @@
 
         echo Highcharts::widget([
             'options' => [
-                'title' => ['text' => 'test'],
+                'title' => ['text' => Yii::t('app', 'Income')],
                 'xAxis' => [
-//                'type' => 'date',
                     'categories' => $income->categories
 
                 ],
                 'yAxis' => [
-                    'title' => ['text' => 'Доход $']
+                    'title' => ['text' => $income->cur]
                 ],
-                'tooltip' => ['valueSuffix' => '$'],
                 'series' => [
-                    ['name' => 'Доход', 'data' => $income->data],
+                    ['name' => Yii::t('app', 'Income'), 'data' => $income->data],
                 ]
             ]
         ]);
@@ -36,17 +34,16 @@
 
         echo Highcharts::widget([
             'options' => [
-                'title' => ['text' => 'test'],
+                'title' => ['text' => Yii::t('app', 'Outlay')],
                 'xAxis' => [
-//                'type' => 'date',
                     'categories' => $outlay->categories
                 ],
                 'yAxis' => [
-                    'title' => ['text' => 'Расход $']
+                    'title' => ['text' => $outlay->cur]
                 ],
-                'tooltip' => ['valueSuffix' => '$'],
+//                'tooltip' => ['valueSuffix' => '$'],
                 'series' => [
-                    ['name' => 'Доход', 'data' => $outlay->data],
+                    ['name' => Yii::t('app', 'Outlay'), 'data' => $outlay->data],
                 ]
             ]
         ]);

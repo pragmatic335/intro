@@ -18,6 +18,8 @@ class Outlay
     public array $categories = [];
     public array $data = [];
 
+    public $cur;
+
     public function __construct(FilterForm $filter)
     {
         $this->filter = $filter;
@@ -25,6 +27,13 @@ class Outlay
 
     public function setParams()
     {
+        if(!$this->filter->currency) {
+            $this->cur = 'RUB';
+        }
+        else {
+            $this->cur = Currencies::findOne($this->filter->currency)['name'];
+        }
+
         $converter = new CurrencyConverter(new CurrencyCbr());
         $format = 'm-d-Y';
 
